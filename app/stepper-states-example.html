@@ -1,0 +1,96 @@
+<mat-vertical-stepper #stepper>
+  <mat-step>
+    <!--<form [formGroup]="firstFormGroup">-->
+    <ng-template matStepLabel>Input RGB color</ng-template>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxFlex="100">
+        <div>RGB values</div>
+      </div>
+      <div fxFlex="45">
+        <mat-form-field appearance="outline" class="">
+          <input
+            #colorR
+            matInput
+            type="number"
+            title=" "
+            matInput
+            [(ngModel)]="color.R"
+            (change)="onSpinnerChange({'name':'R',event:$event,value:colorR.value})"
+            id="colorR"
+          />
+          <span matPrefix class="lable-text">R</span>
+        </mat-form-field>
+      </div>
+      <div fxFlex="24px"></div>
+      <div fxFlex="45">
+        <mat-form-field appearance="outline" class="">
+          <input
+            #colorG
+            matInput
+            type="number"
+            title=" "
+            matInput
+            [(ngModel)]="color.G"
+            (change)="onSpinnerChange({'name':'G',event:$event,value:colorG.value})"
+            id="colorG"
+          />
+          <span matPrefix class="lable-text">G</span>
+        </mat-form-field>
+      </div>
+      <div fxFlex="45">
+        <mat-form-field appearance="outline" class="">
+          <input
+            #colorB
+            matInput
+            type="number"
+            title=" "
+            matInput
+            [(ngModel)]="color.B"
+            (change)="onSpinnerChange({'name':'G',event:$event,value:colorB.value})"
+            id="colorB"
+          />
+          <span matPrefix class="lable-text">B</span>
+        </mat-form-field>
+      </div>
+      <div>
+        <svg width="400" height="180" id="rgbbox">
+          <rect
+            id="svgrect"
+            x="50"
+            y="20"
+            width="150"
+            height="150"
+            style="fill:#000000;fill-opacity:1"
+          />
+        </svg>
+      </div>
+    </div>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    <!--</form>-->
+  </mat-step>
+  <mat-step>
+      <div>
+        <button [disabled]="!isRGBSelected()" mat-button matStepperPrevious>
+          Back
+        </button>
+        <button [disabled]="!isRGBSelected()" mat-button matStepperNext>
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
